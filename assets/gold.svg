@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Gold bar">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe08a"/>
+      <stop offset="55%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#9c6b00"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="24" fill="#fff9e7"/>
+  <path d="M24 70 42 38h54l-18 32Z" fill="url(#goldGradient)" stroke="#8e6400" stroke-width="3"/>
+  <path d="M24 70h54l18 12H42Z" fill="#b98209" stroke="#8e6400" stroke-width="3"/>
+  <path d="M42 38v44" stroke="#f8e29b" stroke-width="3" opacity=".9"/>
+  <text x="60" y="62" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" font-weight="700" fill="#5b3d00">GOLD</text>
+</svg>

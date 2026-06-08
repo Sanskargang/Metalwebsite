@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metal Pulse India</title>
+    <meta
+      name="description"
+      content="Track live gold and silver prices in India, coin rates, US market comparisons, and precious metals news."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Precious Metals Dashboard</p>
+          <h1>Metal Pulse India</h1>
+          <p class="subheading">
+            Real-time India spot rates, coin markets, US exchange pricing, and latest news.
+          </p>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="ghost-button" id="manualRefreshButton" type="button">
+            Refresh
+          </button>
+
+          <div class="menu-wrap">
+            <button
+              class="menu-button"
+              id="menuButton"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="themeMenu"
+              aria-label="Open display menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            <div class="menu-panel hidden" id="themeMenu" role="menu">
+              <p class="menu-title">Theme</p>
+              <button class="menu-item" data-theme-value="system" role="menuitem">
+                System Default
+              </button>
+              <button class="menu-item" data-theme-value="light" role="menuitem">
+                Light Mode
+              </button>
+              <button class="menu-item" data-theme-value="dark" role="menuitem">
+                Dark Mode
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="hero-card">
+          <div>
+            <p class="hero-label">Market Status</p>
+            <h2 id="heroHeadline">Loading live precious metals data...</h2>
+            <p id="heroSummary">
+              Preparing responsive market insights across India and the US precious metals market.
+            </p>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-pill">
+              <span class="meta-label">Auto Refresh</span>
+              <strong id="refreshRateLabel">60 sec</strong>
+              <span class="meta-helper" id="nextRefreshLabel">Next update in 60 sec</span>
+            </div>
+            <div class="meta-pill">
+              <span class="meta-label">Last Sync</span>
+              <strong id="lastUpdatedLabel">Waiting...</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="status-strip" id="statusStrip" aria-live="polite">
+          Initializing data services...
+        </section>
+
+        <section class="tab-panel active" id="panel-home" data-tab-panel="home">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Home</p>
+              <h2>India Live Spot Rates</h2>
+            </div>
+            <p class="section-copy">
+              Track 24K gold, 22K gold, and silver spot prices with movement versus opening levels.
+            </p>
+          </div>
+
+          <div class="time-grid">
+            <article class="time-card">
+              <p class="section-label">India Time</p>
+              <h3 id="indiaCurrentTime">Loading...</h3>
+              <p class="muted" id="indiaCurrentDate">Waiting...</p>
+            </article>
+
+            <article class="time-card">
+              <p class="section-label">America Time</p>
+              <h3 id="usCurrentTime">Loading...</h3>
+              <p class="muted" id="usMarketStatus">Checking market status...</p>
+              <p class="muted" id="usMarketHours">Market starts at 08:20 AM New York time</p>
+            </article>
+          </div>
+
+          <div class="card-grid" id="indiaRatesGrid"></div>
+        </section>
+
+        <section class="tab-panel" id="panel-coins" data-tab-panel="coins">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Coins</p>
+              <h2>Live Coin Market Rates</h2>
+            </div>
+            <p class="section-copy">
+              Monitor popular Indian coin categories with purity standards and current market value.
+            </p>
+          </div>
+
+          <div class="card-grid coins-grid" id="coinsGrid"></div>
+        </section>
+
+        <section class="tab-panel" id="panel-us" data-tab-panel="us">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">US Markets</p>
+              <h2>America Gold & Silver</h2>
+            </div>
+            <p class="section-copy">
+              View live US gold and silver prices and switch this tab between dollar and Indian rupee values.
+            </p>
+          </div>
+
+          <div class="toggle-group" aria-label="US market currency selector">
+            <button class="toggle-button active" id="usUsdButton" data-us-currency="USD" type="button">
+              Show in USD
+            </button>
+            <button class="toggle-button" id="usInrButton" data-us-currency="INR" type="button">
+              Show in INR
+            </button>
+          </div>
+
+          <div class="card-grid" id="usRatesGrid"></div>
+        </section>
+
+        <section class="tab-panel" id="panel-news" data-tab-panel="news">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Latest News</p>
+              <h2>Precious Metals Headlines</h2>
+            </div>
+            <p class="section-copy">
+              Browse curated precious metals stories with trend analysis, policy updates, and forecasts.
+            </p>
+          </div>
+
+          <div class="news-list" id="newsList"></div>
+
+          <div class="pagination">
+            <button class="ghost-button" id="prevNewsButton" type="button">Previous</button>
+            <span id="newsPageIndicator">Page 1</span>
+            <button class="ghost-button" id="nextNewsButton" type="button">Next</button>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary">
+        <button class="nav-item active" data-tab-target="home" type="button">
+          <span class="nav-icon">Home</span>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" data-tab-target="coins" type="button">
+          <span class="nav-icon">Coin</span>
+          <span class="nav-label">Coins</span>
+        </button>
+        <button class="nav-item" data-tab-target="us" type="button">
+          <span class="nav-icon">US</span>
+          <span class="nav-label">US Markets</span>
+        </button>
+        <button class="nav-item" data-tab-target="news" type="button">
+          <span class="nav-icon">News</span>
+          <span class="nav-label">Latest News</span>
+        </button>
+      </nav>
+    </div>
+
+    <script src="./config.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
