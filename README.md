@@ -1,4 +1,3 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/188a96a8-7e1f-4085-ad4b-3805f987f355" />﻿# Metalwebsite
 Go through setup.md file to run this project
 
 This is Home page of this website
